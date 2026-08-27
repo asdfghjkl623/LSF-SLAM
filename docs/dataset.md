@@ -1,68 +1,67 @@
-# Dataset Description
+# LSF-SLAM Dataset
 
-This page summarizes the preliminary dataset information reported in the LSF-SLAM paper draft.
-
-## Purpose
-
-The LSF-SLAM dataset is designed for evaluating visual localization on flapping-wing flying robots under outdoor far-field conditions. It focuses on the following coupled challenges:
-
-- limited payload and short physical stereo baseline;
-- weak disparity for distant landmarks;
-- vibration induced by flapping-wing motion;
-- rapid viewpoint change during outdoor flight;
-- cross-focal correspondence verification between short- and long-focal cameras.
+The LSF-SLAM benchmark is designed for long-distance visual localization on flapping-wing flying robots under short-baseline, weak-disparity, vibration-affected outdoor flight.
 
 ## Platform
 
-The data were collected using the U-HAWK2.0 flapping-wing platform.
+Data were collected using the U-HAWK 2.0 flapping-wing platform.
 
 | Parameter | Value |
 |---|---:|
 | Wingspan | 220 cm |
 | Body weight | 2300 g |
-| Flight speed | 8-15 m/s |
-| Flapping frequency | 3-5 Hz |
+| Flight speed | 8–15 m/s |
+| Flapping frequency | 3–5 Hz |
+| Nominal flight altitude | 50–60 m |
 
-## Sensor Setup
+## Sensor Rig
 
-The paper draft describes a calibrated trinocular camera rig and an integrated IMU.
+| Sensor | Configuration | Role |
+|---|---|---|
+| cam0 | 1.4 mm short focal | Full-image tracking reference |
+| cam1 | 1.4 mm short focal | Equal-focal Standard Stereo partner |
+| cam2 | 2.0 mm long focal | Magnified observations inside the calibrated overlap |
+| IMU | Integrated 1 kHz unit | Visual–inertial baseline input |
+| RTK-GNSS | Centimeter-level positioning | Reference trajectory in the East-North-Up frame |
 
-| Sensor | Role in the paper |
-|---|---|
-| `cam0` | Short-focal tracking reference camera |
-| `cam1` | Equal-focal stereo camera used with `cam0` for the standard stereo baseline |
-| `cam2` | Long-focal camera used with `cam0` for LSF-SLAM |
-| IMU | High-rate inertial data used for visual-inertial baseline evaluation |
-| RTK/GNSS | Reference trajectory source for trajectory-error evaluation |
-
-The `cam0-cam2` pair forms the long-short focal input used by LSF-SLAM. The `cam0-cam1` pair forms the equal-focal stereo input used by the standard stereo baseline.
+The cam0–cam2 pair has a 4 cm physical baseline and forms the heterogeneous input used by LSF-SLAM. The cam0–cam1 pair has an 8 cm physical baseline and is used for the same-pipeline Standard Stereo comparison.
 
 ## Sequence List
 
-| Sequence | Flight length | Duration | Resolution | Scenario |
-|---|---:|---:|---|---|
-| FWFR-01 | 225.7 m | 20 s | 640 x 400 | Nearly straight flight with regular vibration |
-| FWFR-02 | 345.2 m | 30 s | 640 x 400 | Straight flight with a sharp turn and moderate vibration |
-| FWFR-03 | 479.2 m | 40 s | 640 x 400 | Large-turn trajectory under strong vibration |
-| FWFR-04 | 357.3 m | 30 s | 640 x 400 | Large-angle turning followed by straight flight with moderate vibration |
-| FWFR-05 | 784.8 m | 60 s | 640 x 400 | Long trajectory with continuous turns |
-| FWFR-06 | 959.5 m | 80 s | 640 x 400 | Sharp turn followed by a long straight trajectory |
+All images have a resolution of 640 × 400 pixels.
 
-## Planned Data Contents
+| Sequence | Nominal altitude | Flight length | Duration |
+|---|---:|---:|---:|
+| FWFR-01 | 50 m | 225.7 m | 20 s |
+| FWFR-02 | 50 m | 345.2 m | 30 s |
+| FWFR-03 | 50 m | 479.2 m | 40 s |
+| FWFR-04 | 50 m | 357.3 m | 30 s |
+| FWFR-05 | 50 m | 784.8 m | 60 s |
+| FWFR-06 | 50 m | 959.5 m | 80 s |
+| FWFR-07 | 60 m | 127.9 m | 10 s |
+| FWFR-08 | 60 m | 96.6 m | 10 s |
 
-The first public data package is planned to include:
+The first six trajectories were recorded at a nominal altitude of approximately 50 m. FWFR-07 and FWFR-08 are additional same-site trajectories recorded at approximately 60 m with the same platform and 2.0/1.4 mm long-to-short focal configuration.
 
-- synchronized short-focal and long-focal image streams;
-- timestamps for image synchronization;
-- per-sequence metadata;
-- camera calibration files;
-- RTK/GNSS reference trajectories;
-- evaluation scripts for ATE and RPE.
+## Planned Public Package
 
-At the current preliminary stage, the actual downloadable archives are not yet attached.
+The external release is expected to contain:
 
-## Evaluation Context
+- synchronized cam0 and cam2 image streams;
+- image timestamps and per-sequence metadata;
+- camera intrinsic and extrinsic calibration files;
+- RTK-GNSS reference trajectories;
+- coordinate-frame documentation;
+- ATE and RPE evaluation scripts.
 
-The paper evaluates LSF-SLAM against monocular, multi-focal, equal-focal stereo, photorealistic-mapping-oriented, visual-inertial, and hybrid visual baselines. The reported baselines include ORB-SLAM3 Mono, MF-SLAM, a standard stereo pipeline, Photo-SLAM stereo, VINS-Fusion, and Rover-SLAM.
+The dataset and camera-parameter archives are already stored on Google Drive. The public URL will be inserted after link confirmation.
 
-All estimated trajectories are aligned to the RTK/GNSS reference trajectory in the East-North-Up frame before error computation in the paper draft. Detailed evaluation code and exact command examples will be added in a later release.
+## Evaluation Protocol
+
+The paper evaluates trajectory accuracy using absolute trajectory error (ATE) and relative pose error (RPE). Estimated trajectories are aligned with the RTK-GNSS reference in the East-North-Up frame before error computation. Reported ATE RMSE values use ten runs per sequence; a missing result indicates tracking failure.
+
+The tested references include MF-SLAM, Standard Stereo, Photo-SLAM, ORB-SLAM3 Mono, and VINS-Fusion. LSF-SLAM completes all eight trajectories and records the lowest mean ATE RMSE on every sequence among these tested baselines.
+
+## Data Availability
+
+See [download.md](download.md) for the release status and future Google Drive links.
