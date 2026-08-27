@@ -24,7 +24,7 @@
 
 LSF-SLAM is a robust visual SLAM framework for long-distance localization of flapping-wing flying robots (FWFRs). It combines wide-field short-focal tracking with verified long-focal observations inside a calibrated overlap, then optimizes the heterogeneous measurements using residual-calibrated LSF-BA.
 
-> **Release status.** This repository currently provides the project page, paper figures, submission video, and dataset documentation. The dataset and camera-parameter archives are stored on Google Drive; their public download links will be added here in a later update.
+> **Release status.** This repository currently provides the project page, paper figures, a submission-video preview, and dataset documentation. The dataset and camera-parameter archives are stored on Google Drive; their public download links will be added here in a later update.
 
 <p align="center">
   <img src="assets/platform_dataset.jpg" width="920" alt="U-HAWK 2.0 platform, bifocal camera rig, and eight FWFR trajectories">
