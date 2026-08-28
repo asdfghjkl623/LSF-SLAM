@@ -3,8 +3,6 @@
 <h1>LSF-SLAM</h1>
 <h3>Robust Visual SLAM for Flapping-Wing Flying Robots Based on Collaborative Bifocal-Stereo Cameras</h3>
 
-<p><strong>Zheng Zhong · Shuo Chen · Qiang Fu · Xiaoyang Wu · Xulong Zhang · Wei He</strong></p>
-
 <p>
   <img src="https://img.shields.io/badge/status-pre--release-6f42c1" alt="Pre-release status">
   <img src="https://img.shields.io/badge/dataset-8%20FWFR%20trajectories-1769aa" alt="Eight FWFR trajectories">
@@ -16,15 +14,14 @@
   <a href="#submission-video">Submission video</a> ·
   <a href="#method-overview">Method</a> ·
   <a href="#fwfr-bifocal-dataset">Dataset</a> ·
-  <a href="#downloads">Downloads</a> ·
-  <a href="#citation">Citation</a>
+  <a href="#downloads">Downloads</a>
 </p>
 
 </div>
 
 LSF-SLAM is a robust visual SLAM framework for long-distance localization of flapping-wing flying robots (FWFRs). It combines wide-field short-focal tracking with verified long-focal observations inside a calibrated overlap, then optimizes the heterogeneous measurements using residual-calibrated LSF-BA.
 
-> **Release status.** This repository currently provides the project page, paper figures, a submission-video preview, and dataset documentation. The dataset and camera-parameter archives are stored on Google Drive; their public download links will be added here in a later update.
+> **Release status.** This repository provides the project overview, submission video, FWFR bifocal dataset, and calibrated camera parameters. Large files are hosted on Google Drive.
 
 <p align="center">
   <img src="assets/platform_dataset.jpg" width="920" alt="U-HAWK 2.0 platform, bifocal camera rig, and eight FWFR trajectories">
@@ -33,18 +30,24 @@ LSF-SLAM is a robust visual SLAM framework for long-distance localization of fla
 ## Submission Video
 
 <p align="center">
-  <img src="assets/video_preview.jpg" width="920" alt="Preview from the LSF-SLAM submission video">
+  <a href="https://drive.google.com/file/d/1-9VKzxCvI2t8P7R0seRV5w83UdeFzNpw/view?usp=drive_link">
+    <img src="assets/video_preview.jpg" width="920" alt="Preview from the LSF-SLAM submission video">
+  </a>
 </p>
 
-<p align="center"><strong>Preview from the 1 min 46 s submission video. The public video link will be added in a later update.</strong></p>
+<p align="center"><strong><a href="https://drive.google.com/file/d/1-9VKzxCvI2t8P7R0seRV5w83UdeFzNpw/view?usp=drive_link">Watch the submission video on Google Drive</a></strong></p>
 
 The video introduces the U-HAWK 2.0 platform, bifocal sensing configuration, cross-focal front end, residual-calibrated LSF-BA backend, benchmark results, ablations, and Jetson Orin Nano runtime.
 
 ## Method Overview
 
 <p align="center">
-  <img src="assets/framework.png" width="960" alt="LSF-SLAM system overview">
+  <a href="assets/LSF-SLAM-crop.pdf">
+    <img src="assets/LSF-SLAM-crop.png" width="960" alt="LSF-SLAM system overview">
+  </a>
 </p>
+
+<p align="center"><strong><a href="assets/LSF-SLAM-crop.pdf">View the original Method Overview PDF</a></strong></p>
 
 LSF-SLAM separates two sensing roles that conflict on a lightweight FWFR:
 
@@ -88,8 +91,6 @@ The benchmark contains eight synchronized outdoor trajectories recorded at the s
 | FWFR-07 | 60 m | 127.9 m | 10 s | 640 × 400 |
 | FWFR-08 | 60 m | 96.6 m | 10 s | 640 × 400 |
 
-See [docs/dataset.md](docs/dataset.md) for the platform, sensors, coordinate reference, and planned package contents.
-
 ## Sensor Configuration
 
 | Sensor | Configuration and role |
@@ -108,40 +109,10 @@ Large data files are hosted outside GitHub.
 
 | Package | Status | Link |
 |---|---|---|
-| Synchronized bifocal image sequences | Stored on Google Drive | **Coming soon** |
-| Camera intrinsic and extrinsic parameters | Stored on Google Drive | **Coming soon** |
-| RTK-GNSS reference trajectories | External archive | **Coming soon** |
-| Evaluation scripts | Release preparation | **Coming soon** |
+| Synchronized bifocal image sequences and RTK-GNSS references | Available on Google Drive | [Download dataset](https://drive.google.com/file/d/1ufnNW80I8dVP6fwk-kiOvI6dTAlid2vD/view?usp=drive_link) |
+| Camera intrinsic and extrinsic parameters | Available on Google Drive | [Download camera parameters](https://drive.google.com/file/d/1e7Zy8j1xIOE4UMGlSgeHpeyu8oJYyxjO/view?usp=drive_link) |
 
-The Google Drive URL will be added to both this page and [docs/download.md](docs/download.md) once the public link is confirmed.
-
-## Repository Contents
-
-    LSF-SLAM/
-    ├── README.md
-    ├── assets/
-    │   ├── framework.png
-    │   ├── platform_dataset.jpg
-    │   ├── benchmark_summary.png
-    │   └── video_preview.jpg
-    └── docs/
-        ├── dataset.md
-        ├── download.md
-        └── release_plan.md
-
-## Citation
-
-The manuscript is currently under review. Final publication metadata and DOI will be added after acceptance.
-
-    @misc{zhong2026lsfslam,
-      title  = {LSF-SLAM: Robust Visual SLAM for Flapping-Wing Flying Robots
-                Based on Collaborative Bifocal-Stereo Cameras},
-      author = {Zhong, Zheng and Chen, Shuo and Fu, Qiang and Wu, Xiaoyang
-                and Zhang, Xulong and He, Wei},
-      year   = {2026},
-      note   = {Manuscript under review. Project repository:
-                https://github.com/asdfghjkl623/LSF-SLAM}
-    }
+> **Archive password:** `LSFSLAM`
 
 ## License
 
@@ -149,5 +120,5 @@ The code and dataset licenses will be specified with the public data release.
 
 ## Contact
 
-For questions, please open a GitHub issue or contact **Qiang Fu** at [fuqiang@ustb.edu.cn](mailto:fuqiang@ustb.edu.cn).
+For questions, please open a GitHub issue or contact the first author, **Zheng Zhong**, at [d202310385@xs.ustb.edu.cn](mailto:d202310385@xs.ustb.edu.cn).
 
