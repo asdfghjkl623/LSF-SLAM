@@ -31,7 +31,7 @@ LSF-SLAM is a robust visual SLAM framework for long-distance localization of fla
 
 <p align="center">
   <a href="https://drive.google.com/file/d/1-9VKzxCvI2t8P7R0seRV5w83UdeFzNpw/view?usp=drive_link">
-    <img src="assets/video_preview.jpg" width="920" alt="Preview from the LSF-SLAM submission video">
+    <img src="assets/video_preview.png" width="920" alt="Preview from the LSF-SLAM submission video">
   </a>
 </p>
 
